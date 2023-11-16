@@ -54,3 +54,7 @@ y_train = np.random.randint(2, size=(1000, 1))
 
 # Entrenar el modelo
 history = model.fit(x_train, y_train, epochs=5, batch_size=batch_size_70)
+
+print(f"Número de procesos realizados: {len(tf.config.experimental.list_physical_devices('GPU'))}")
+print("Se ejecutara tf.keras.backend.clear_session()")
+tf.keras.backend.clear_session()
