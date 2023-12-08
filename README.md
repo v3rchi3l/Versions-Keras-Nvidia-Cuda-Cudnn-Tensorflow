@@ -18,3 +18,6 @@ It also indicates, if everything is installed correctly, if a GPU is found or no
 TestTensorGPU.py .
 
 Make a small network to verify its correct operation
+
+for more compatibility of versions, please check oficial information, for example...
+https://www.tensorflow.org/install/source_windows?hl=es-419#gpu
