@@ -1,13 +1,18 @@
+import torch
 import tensorflow as tf
 import subprocess
 import os
 
+print("=" * 40)
+print("=" * 40)
 # Ejecutar el comando nvidia-smi
 resultado = subprocess.run(['nvidia-smi'], shell=True, capture_output=True, text=True)
 
 # Imprimir la salida del comando nvidia-smi
 print(resultado.stdout)
 
+print("=" * 40)
+print("=" * 40)
 # Ejecutar el comando nvcc --version para obtener la versión de CUDA
 resultado = subprocess.run(['nvcc', '--version'], capture_output=True, text=True)
 
@@ -27,7 +32,8 @@ else:
     print("CUDA no está instalado o no se pudo encontrar la versión.")
 
 directorio_cudnn = r'C:\Program Files\NVIDIA\CUDNN'
-
+print("=" * 40)
+print("=" * 40)
 # Verificar si el directorio de cuDNN existe
 if os.path.exists(directorio_cudnn) and os.path.isdir(directorio_cudnn):
     # Obtener la lista de archivos y carpetas en el directorio cuDNN
@@ -67,6 +73,9 @@ if path_env:
 else:
     print("La variable de entorno PATH no está definida.")
 
+print("=" * 40)
+print("=" * 40)
+print("detalles de Tensorflow")
 # Imprimir la versión de TensorFlow
 print("Versión de TensorFlow:", tf.__version__)
 
@@ -83,28 +92,19 @@ if gpus:
 else:
     # Si no se encontraron GPUs
     print("No se encontró ninguna GPU.")
+print("=" * 40)
+print("=" * 40)
+print("Detalles de Pytorch")
+# Imprimir la versión de PyTorch
+print("version de Pytorch" + torch.__version__)
 
+print("Verifica la disponibilidad de CUDA (GPU) en PyTorch")
+print(torch.cuda.is_available())
 
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
+print("Muestra el número de dispositivos CUDA disponibles")
+print(torch.cuda.device_count())
+
+print("Muestra información detallada sobre la GPU")
+if torch.cuda.is_available():
+    print(torch.cuda.get_device_name(0))  # Si tienes varias GPUs, cambia el índice (0) según sea necesario
+    print(torch.cuda.get_device_properties(0))  # Muestra propiedades detalladas del dispositivo
